@@ -21,6 +21,12 @@
         <img :src="backgroundShapeImg" alt="backgroundshape" class="shape-img" />
         <img :src="personaImg" alt="Persona" class="persona-img" />
         <img :src="celularImg" alt="Celular" class="celular-img" />
+        <!-- Controles del slider -->
+        <SliderControls
+          @prev="onPrev"
+          @next="onNext"
+          @pause="onPause"
+        />
       </div>
     </div>
   </section>
@@ -30,6 +36,7 @@
 import CtaButton from '@/components/CtaButton.vue'
 import SecondaryButton from '@/components/SecondaryButton.vue'
 import backgroundShapeImg from '@/assets/backgroundshape.png'
+import SliderControls from '@/components/SliderControls.vue'
 import personaImg from '@/assets/persona.png'
 import celularImg from '@/assets/celular.png'
 import heroBg from '@/assets/hero_bg.png'
@@ -39,6 +46,17 @@ const onContratar = () => {
 }
 const onTarifas = () => {
 
+}
+
+
+const onPrev = () => {
+  console.log('Prev slide')
+}
+const onNext = () => {
+  console.log('Next slide')
+}
+const onPause = () => {
+  console.log('Pause slider')
 }
 
 </script>
