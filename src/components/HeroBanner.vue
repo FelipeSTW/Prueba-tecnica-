@@ -231,7 +231,7 @@ const toggleAutoplay = () => {
   }
   
   .celular-img {
-    width: 75%;
+    width: 85%;
     top: 5%;
     right: -5%;
   }
@@ -307,7 +307,7 @@ const toggleAutoplay = () => {
   }
   
   .celular-img {
-    width: 40%;
+    width: 75%;
     top: 10%;
   }
   
