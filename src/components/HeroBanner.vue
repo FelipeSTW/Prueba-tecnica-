@@ -90,10 +90,19 @@ const onPause = () => {
 .hero-content {
   position: relative;
 }
+h1.display-6.mb-4 {
+      font-family: 'Nunito Sans', sans-serif;
+      width: 470px;
+      height: 144px;
+      font-size: 40px;
+      
+      
+}
 
 .hero-text h1 {
   color: #ffffff;
   font-weight: 400;
+
 }
 
 .hero-images {
@@ -126,5 +135,34 @@ const onPause = () => {
   transform: rotate(-10deg);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   z-index: 2;
+}
+.btn-cta {
+  font-family: 'Nunito Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 260px;
+  margin-right: 12px;
+  white-space: nowrap;
+
+  /* Colores y tipografía */
+  background-color: #00DBBC;
+  color: #0e0d8a;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  /* Transiciones */
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-cta:hover {
+  background-color: #00DBBC;
+  transform: translateY(-1px);
+}
+.btn-cta:active {
+  transform: translateY(0);
 }
 </style>

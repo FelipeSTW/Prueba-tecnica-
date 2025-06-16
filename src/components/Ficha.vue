@@ -17,6 +17,13 @@ import truckIcon from "@/assets/truck.png";
 <style scoped>
 .ficha-banner {
   background: linear-gradient(90deg, #242a8c 0%, #0e0d8a 100%);
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700;       
+  font-size: 12px;         
+  line-height: 24px;       
+  letter-spacing: 0.4px;   
+  
+   text-align: center;
 }
 
 .icon-truck {

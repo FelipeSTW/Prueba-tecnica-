@@ -41,33 +41,38 @@ export default {
 </script>
 
 <style scoped>
-/* NAVBAR */
+/* Navbar general */
 .navbar-custom {
   background-color: #0e0d8a;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
 
-/* WRAPPER */
+/* Wrapper: flujo horizontal, width fijo 1440px, height 72px */
 .nav-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  width: 100%;
+  max-width: 1440px;
+  height: 72px;
+  padding: 16px 75px;
+  margin: 0 auto;
 }
 
-/* LOGO + TEXTO */
+/* Logo + texto */
 .nav-brand .logo {
-  height: 40px;
+  height: 21px;
   width: auto;
 }
 .brand-text {
   font-size: 1.125rem;
-  color: #fff;
+  color: #912626;
   user-select: none;
+  margin-left: 0.5rem;
 }
 
-/* LINKS */
+/* Links */
 .nav-links ul {
   display: flex;
   list-style: none;
@@ -76,7 +81,8 @@ export default {
   gap: 2rem;
 }
 .nav-links a {
-  color: #fff;
+  font-family: 'Nunito Sans', sans-serif;
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: 500;
   text-decoration: none;
@@ -86,19 +92,31 @@ export default {
   color: #00e09b;
 }
 
-/* BOTÓN CTA */
+/* Botón CTA */
 .btn-cta {
-  background-color: #00e09b;
+  font-family: 'Nunito Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 260px;
+  margin-right: 12px;
+  white-space: nowrap;
+
+  /* Colores y tipografía */
+  background-color: #00DBBC;
   color: #0e0d8a;
   text-transform: uppercase;
   font-weight: 600;
-  padding: 0.5rem 1.5rem;
-  border: none;
-  border-radius: 0.375rem;
+
+  /* Transiciones */
   transition: background-color 0.2s, transform 0.1s;
 }
+
 .btn-cta:hover {
-  background-color: #00c88d;
+  background-color: #00DBBC;
   transform: translateY(-1px);
 }
 .btn-cta:active {
