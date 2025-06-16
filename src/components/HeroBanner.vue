@@ -5,7 +5,7 @@
     <!-- Carousel wrapper -->
     <Carousel 
       ref="carousel"
-      :autoplay="isAutoplayActive ? 3000 : 0" 
+      :autoplay="isAutoplayActive ? 4000 : 0" 
       :wrap-around="true" 
       :transition="500"
       @slide-start="onSlideStart"
@@ -22,8 +22,8 @@
                 </h1>
                 
                 <div class="hero-buttons d-flex gap-3">
-                  <CtaButton @click="onContratar">{{ slide.ctaText }}</CtaButton>
-                  <SecondaryButton @click="onTarifas">{{ slide.secondaryText }}</SecondaryButton>
+                  <CtaButton @click="onContratar(slide)">{{ slide.ctaText }}</CtaButton>
+                  <SecondaryButton @click="onTarifas(slide)">{{ slide.secondaryText }}</SecondaryButton>
                 </div>
               </div>
             </div>
@@ -34,6 +34,11 @@
                 <img :src="backgroundShapeImg" alt="backgroundshape" class="shape-img" />
                 <img :src="slide.personImg" alt="Persona" class="persona-img" />
                 <img :src="slide.phoneImg" alt="Celular" class="celular-img" />
+                
+                <!-- Loading indicator -->
+                <div v-if="loading && index === 0" class="loading-overlay">
+                  <div class="spinner"></div>
+                </div>
               </div>
             </div>
 
@@ -56,7 +61,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Carousel, Slide } from 'vue3-carousel'
 import CtaButton from '@/components/CtaButton.vue'
 import SecondaryButton from '@/components/SecondaryButton.vue'
@@ -67,34 +72,60 @@ import celularImg from '@/assets/celular.png'
 
 const isAutoplayActive = ref(true)
 const carousel = ref(null)
+const loading = ref(false)
 
-// Datos del carousel (puedes agregar más slides aquí)
-const slides = ref([
-  {
-    title: "Hazte cliente empresa del Banco de Chile y ",
-    titleBold: "obtén tu producto a costo $0*",
-    ctaText: "Quiero contratar",
-    secondaryText: "Nuestras tarifas",
-    personImg: personaImg,
-    phoneImg: celularImg
-  },
-  // Agregar más slides aquí si necesitas
-  {
-    title: "Hazte cliente empresa del Banco de Chile  ",
-    titleBold: "y obten tu producto a costo 0*",
-    ctaText: "Quiero contratar",
-    secondaryText: "Nuestras tarifas", 
-    personImg: personaImg,
-    phoneImg: celularImg
-  }
-])
-
-const onContratar = () => {
-  console.log('Contratar clicked')
+// Slide inicial (Figma)
+const initialSlide = {
+  title: "Hazte cliente empresa del Banco de Chile y ",
+  titleBold: "obtén tu producto a costo $0*",
+  ctaText: "Quiero contratar",
+  secondaryText: "Nuestras tarifas",
+  personImg: personaImg,
+  phoneImg: celularImg
 }
 
-const onTarifas = () => {
-  console.log('Tarifas clicked')
+// Datos del carousel
+const slides = ref([initialSlide])
+
+// Fetch productos y transformar a slides
+const fetchProducts = async () => {
+  loading.value = true
+  try {
+    const response = await fetch('https://fakestoreapi.com/products?limit=5')
+    const products = await response.json()
+    
+    // Transformar productos a formato de slides
+    const productSlides = products.map(product => ({
+      title: "Descubre nuestro producto: ",
+      titleBold: product.title,
+      ctaText: "Ver producto",
+      secondaryText: `${product.price}`,
+      personImg: personaImg,
+      phoneImg: celularImg
+    }))
+    
+    // Agregar slides de productos después del inicial
+    slides.value = [initialSlide, ...productSlides]
+    
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    // Si falla la API, mantener solo el slide inicial
+  } finally {
+    loading.value = false
+  }
+}
+
+// Cargar productos al montar el componente
+onMounted(() => {
+  fetchProducts()
+})
+
+const onContratar = (slide) => {
+  console.log('Contratar clicked:', slide.titleBold)
+}
+
+const onTarifas = (slide) => {
+  console.log('Tarifas clicked:', slide.titleBold)
 }
 
 const onSlideStart = (slideIndex) => {
@@ -204,7 +235,7 @@ const toggleAutoplay = () => {
 .carousel-controls {
   position: absolute;
   bottom: 2rem;
-  left: 16rem;
+  left: 2rem;
   z-index: 10;
 }
 
@@ -307,7 +338,7 @@ const toggleAutoplay = () => {
   }
   
   .celular-img {
-    width: 75%;
+    width: 40%;
     top: 10%;
   }
   
@@ -320,6 +351,34 @@ const toggleAutoplay = () => {
     bottom: 1rem;
     left: 1rem;
   }
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(14, 13, 138, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #00e09b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Carousel customization */

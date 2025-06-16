@@ -1,6 +1,6 @@
 <template>
   <section class="ficha-banner">
-    <div class="container d-flex align-items-center py-2 content-ficha">
+    <div class="container d-flex align-items-center content-ficha">
       <img :src="truckIcon" alt="Camión" class="icon-truck me-2" />
 
       <span class="ficha-text">
@@ -16,14 +16,15 @@ import truckIcon from "@/assets/truck.png";
 
 <style scoped>
 .ficha-banner {
-  background: linear-gradient(90deg, #242a8c 0%, #0e0d8a 100%);
+  background: rgba(26, 30, 137, 0.5);
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 700;       
   font-size: 12px;         
   line-height: 24px;       
   letter-spacing: 0.4px;   
   text-align: center;
-  height: 16px;
+  height: 64px;display: flex;
+  align-items: center;
 }
 
 .icon-truck {
@@ -44,7 +45,7 @@ import truckIcon from "@/assets/truck.png";
 
 @media (max-width: 768px) {
   .ficha-banner {
-    height: 8px;
+    height: 48px;
   }
 }
 </style>
