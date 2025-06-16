@@ -257,7 +257,7 @@ const toggleAutoplay = () => {
   
   .persona-img {
     width: 66%;
-    bottom: -90px;
+    bottom: -249px;
   }
   
   .celular-img {
@@ -304,6 +304,7 @@ const toggleAutoplay = () => {
   }
   
   .hero-content {
+    display: flex;
     min-height: auto;
 
     text-align: center;
@@ -315,7 +316,7 @@ const toggleAutoplay = () => {
   }
   
   .hero-images-col {
-    order: 2;
+    order: -1;
   }
   
   .hero-title {
@@ -337,13 +338,13 @@ const toggleAutoplay = () => {
   }
   
   .celular-img {
-    width: 40%;
-    top: 10%;
+    width: 69%;
+    top: 22%;
   }
   
   .persona-img {
     width: 65%;
-    bottom: -80px;
+    bottom: -43px;
   }
   
   .carousel-controls {
