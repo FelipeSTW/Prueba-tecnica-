@@ -192,11 +192,10 @@ const toggleAutoplay = () => {
 
 .celular-img {
   position: absolute;
-  top: 15%;
-  right: 10%;
-  width: 45%;
+  top: -2%;
+  right: -7%;
+  width: 84%;
   height: auto;
-  transform: rotate(-10deg);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
@@ -229,6 +228,12 @@ const toggleAutoplay = () => {
   .persona-img {
     width: 66%;
     bottom: -90px;
+  }
+  
+  .celular-img {
+    width: 75%;
+    top: 5%;
+    right: -5%;
   }
   
   .hero-buttons {
