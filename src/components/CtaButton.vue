@@ -16,10 +16,11 @@
   font-weight: 600;
   padding: 0.75rem 1.75rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 32px;
   transition: background-color 0.2s, transform 0.1s;
   white-space: nowrap;
   min-width: 180px;
+  min-width: fit-content;
 }
 .btn-cta:hover {
   background-color: #00c88d;
