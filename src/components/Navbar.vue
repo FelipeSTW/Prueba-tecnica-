@@ -1,78 +1,108 @@
 <template>
   <nav class="navbar-custom">
-    <!-- DIV PRINCIPAL -->
-    <div class="container nav-wrapper">
-      <!-- SUB DIV 1: Marca -->
-      <div class="nav-brand">
-        <router-link
-          to="/"
-          class="d-flex align-items-center text-decoration-none"
-        >
-          <img :src="logo" alt="Pago de Banco de Chile" class="logo me-2" />
-        </router-link>
-      </div>
+    <div class="container-fluid">
+      <div class="nav-wrapper">
+        <!-- Logo -->
+        <div class="nav-brand">
+          <router-link to="/" class="d-flex align-items-center text-decoration-none">
+            <img :src="logo" alt="Pago de Banco de Chile" class="logo" />
+          </router-link>
+        </div>
 
-      <!-- SUB DIV 2: Enlaces -->
-      <div class="nav-links">
-        <ul>
-          <li><a href="#">Productos y tarifas</a></li>
-          <li><a href="#">Cómo contratar</a></li>
-          <li><a href="#">Beneficios</a></li>
-        </ul>
-      </div>
+        <!-- Desktop/Tablet: Links y botón -->
+        <div class="nav-desktop d-none d-md-flex">
+          <div class="nav-links">
+            <ul class="mb-0">
+              <li><a href="#">Productos y tarifas</a></li>
+              <li><a href="#">Cómo contratar</a></li>
+              <li><a href="#">Beneficios</a></li>
+            </ul>
+          </div>
+          <div class="nav-cta ms-4">
+            <button class="btn btn-cta">QUIERO CONTRATAR</button>
+          </div>
+        </div>
 
-      <!-- SUB DIV 3: Botón CTA -->
-      <div class="nav-cta">
-        <button class="btn btn-cta">QUIERO CONTRATAR</button>
+        <!-- Mobile: Botón CTA + Hamburger -->
+        <div class="mobile-nav d-md-none d-flex align-items-center gap-2">
+          <button class="btn btn-cta btn-cta-mobile">CONTRATAR</button>
+          <button 
+            class="btn-hamburger" 
+            @click="toggleMenu"
+            :class="{ active: isMenuOpen }"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </div>
+
+    <!-- Mobile Sidebar Menu -->
+    <div class="mobile-menu" :class="{ active: isMenuOpen }">
+      <div class="mobile-menu-content">
+        <ul class="mobile-nav-links">
+          <li><a href="#" @click="closeMenu">Productos y tarifas</a></li>
+          <li><a href="#" @click="closeMenu">Cómo contratar</a></li>
+          <li><a href="#" @click="closeMenu">Beneficios</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div 
+      class="mobile-overlay" 
+      :class="{ active: isMenuOpen }" 
+      @click="closeMenu"
+    ></div>
   </nav>
 </template>
 
-<script>
-import logo from "@/assets/logo.png";
+<script setup>
+import { ref } from 'vue'
+import logo from "@/assets/logo.png"
 
-export default {
-  name: "Navbar",
-  data() {
-    return { logo };
-  },
-};
+const isMenuOpen = ref(false)
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
 </script>
 
 <style scoped>
 /* Navbar general */
 .navbar-custom {
   background-color: #0e0d8a;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  position: relative;
+  z-index: 1000;
 }
 
-/* Wrapper: flujo horizontal, width fijo 1440px, height 72px */
+/* Wrapper principal */
 .nav-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 1440px;
   height: 72px;
-  padding: 16px 75px;
-  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* Logo + texto */
+/* Logo */
 .nav-brand .logo {
   height: 21px;
   width: auto;
 }
-.brand-text {
-  font-size: 1.125rem;
-  color: #912626;
-  user-select: none;
-  margin-left: 0.5rem;
+
+/* Desktop/Tablet navigation */
+.nav-desktop {
+  display: flex;
+  align-items: center;
 }
 
-/* Links */
 .nav-links ul {
   display: flex;
   list-style: none;
@@ -80,46 +110,174 @@ export default {
   padding: 0;
   gap: 2rem;
 }
+
 .nav-links a {
-  font-family: 'Nunito Sans', sans-serif;
   color: #ffffff;
   text-transform: uppercase;
   font-weight: 500;
+  font-size: 0.875rem;
   text-decoration: none;
   transition: color 0.2s;
 }
+
 .nav-links a:hover {
   color: #00e09b;
 }
 
 /* Botón CTA */
 .btn-cta {
-  font-family: 'Nunito Sans', sans-serif;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 170px;
-  height: 40px;
-  padding: 8px 16px;
-  border-radius: 260px;
-  margin-right: 12px;
-  white-space: nowrap;
-
-  /* Colores y tipografía */
   background-color: #00DBBC;
   color: #0e0d8a;
   text-transform: uppercase;
   font-weight: 600;
-
-  /* Transiciones */
-  transition: background-color 0.2s, transform 0.1s;
+  font-size: 0.75rem;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 260px;
+  white-space: nowrap;
+  transition: all 0.2s;
+  min-width: 170px;
 }
 
 .btn-cta:hover {
-  background-color: #00DBBC;
+  background-color: #00c88d;
   transform: translateY(-1px);
 }
-.btn-cta:active {
-  transform: translateY(0);
+
+/* Botón CTA Mobile */
+.btn-cta-mobile {
+  min-width: 100px;
+  font-size: 0.65rem;
+  padding: 6px 12px;
+}
+
+/* Hamburger button */
+.btn-hamburger {
+  background: none;
+  border: none;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #ffffff;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.btn-hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.btn-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.btn-hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu Sidebar */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100vh;
+  background-color: #0e0d8a;
+  transition: right 0.3s ease;
+  z-index: 1001;
+  padding-top: 80px;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu-content {
+  padding: 2rem 1.5rem;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav-links li {
+  margin-bottom: 1.5rem;
+}
+
+.mobile-nav-links a {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.2s;
+}
+
+.mobile-nav-links a:hover {
+  color: #00e09b;
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .nav-wrapper {
+    padding: 0 2rem;
+  }
+  
+  .nav-links a {
+    font-size: 0.8rem;
+    gap: 1.5rem;
+  }
+  
+  .btn-cta {
+    min-width: 150px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-wrapper {
+    padding: 0 75px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-wrapper {
+    padding: 0 1rem;
+  }
 }
 </style>
