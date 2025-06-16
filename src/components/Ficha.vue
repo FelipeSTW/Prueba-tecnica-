@@ -22,8 +22,8 @@ import truckIcon from "@/assets/truck.png";
   font-size: 12px;         
   line-height: 24px;       
   letter-spacing: 0.4px;   
-  
-   text-align: center;
+  text-align: center;
+  height: 16px;
 }
 
 .icon-truck {
@@ -36,5 +36,11 @@ import truckIcon from "@/assets/truck.png";
   color: #ffffff;
   font-size: 1rem;
   font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .ficha-banner {
+    height: 8px;
+  }
 }
 </style>
