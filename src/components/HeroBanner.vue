@@ -203,8 +203,8 @@ const toggleAutoplay = () => {
 
 .shape-img {
   position: absolute;
-  top: 10%;
-  left: -10%;
+  top: -48%;
+  left: -13px;
   width: 120%;
   height: auto;
   z-index: 0;
@@ -212,7 +212,7 @@ const toggleAutoplay = () => {
 
 .persona-img {
   position: absolute;
-  bottom: -115px;
+  bottom: -138px;
   left: 0;
   width: 67%;
   height: auto;
@@ -223,8 +223,8 @@ const toggleAutoplay = () => {
 
 .celular-img {
   position: absolute;
-  top: 3%;
-  right: -7%;
+  top: 9%;
+  right: -6%;
   width: 76%;
   height: auto;
   z-index: 2;
