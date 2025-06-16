@@ -80,8 +80,8 @@ const slides = ref([
   },
   // Agregar más slides aquí si necesitas
   {
-    title: "Segundo slide - Texto diferente ",
-    titleBold: "con otros beneficios*",
+    title: "Hazte cliente empresa del Banco de Chile  ",
+    titleBold: "y obten tu producto a costo 0*",
     ctaText: "Quiero contratar",
     secondaryText: "Nuestras tarifas", 
     personImg: personaImg,
@@ -204,7 +204,7 @@ const toggleAutoplay = () => {
 .carousel-controls {
   position: absolute;
   bottom: 2rem;
-  left: 2rem;
+  left: 16rem;
   z-index: 10;
 }
 
