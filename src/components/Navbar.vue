@@ -133,7 +133,7 @@ const closeMenu = () => {
   font-size: 0.75rem;
   padding: 8px 16px;
   border: none;
-  border-radius: 260px;
+  border-radius: 6px;
   white-space: nowrap;
   transition: all 0.2s;
   min-width: 170px;

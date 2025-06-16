@@ -4,7 +4,8 @@
 
     <!-- Carousel wrapper -->
     <Carousel 
-      :autoplay="3000" 
+      ref="carousel"
+      :autoplay="isAutoplayActive ? 3000 : 0" 
       :wrap-around="true" 
       :transition="500"
       @slide-start="onSlideStart"
@@ -20,7 +21,7 @@
                   {{ slide.title }} <strong>{{ slide.titleBold }}</strong>
                 </h1>
                 
-                <div class="hero-buttons d-flex flex-column flex-sm-row gap-3">
+                <div class="hero-buttons d-flex gap-3">
                   <CtaButton @click="onContratar">{{ slide.ctaText }}</CtaButton>
                   <SecondaryButton @click="onTarifas">{{ slide.secondaryText }}</SecondaryButton>
                 </div>
@@ -44,8 +45,8 @@
       <template #addons>
         <div class="carousel-controls">
           <SliderControls
-            @prev="$refs.carousel?.prev()"
-            @next="$refs.carousel?.next()"
+            @prev="carousel?.prev()"
+            @next="carousel?.next()"
             @pause="toggleAutoplay"
           />
         </div>
@@ -63,6 +64,9 @@ import SliderControls from '@/components/SliderControls.vue'
 import backgroundShapeImg from '@/assets/backgroundshape.png'
 import personaImg from '@/assets/persona.png'
 import celularImg from '@/assets/celular.png'
+
+const isAutoplayActive = ref(true)
+const carousel = ref(null)
 
 // Datos del carousel (puedes agregar más slides aquí)
 const slides = ref([
@@ -85,8 +89,6 @@ const slides = ref([
   }
 ])
 
-const isAutoplayPaused = ref(false)
-
 const onContratar = () => {
   console.log('Contratar clicked')
 }
@@ -100,8 +102,8 @@ const onSlideStart = (slideIndex) => {
 }
 
 const toggleAutoplay = () => {
-  isAutoplayPaused.value = !isAutoplayPaused.value
-  console.log('Autoplay toggled:', !isAutoplayPaused.value)
+  isAutoplayActive.value = !isAutoplayActive.value
+  console.log('Autoplay toggled:', isAutoplayActive.value)
 }
 </script>
 
@@ -150,6 +152,7 @@ const toggleAutoplay = () => {
 
 .hero-buttons {
   max-width: 400px;
+  flex-direction: row;
 }
 
 /* Imágenes */
@@ -162,8 +165,9 @@ const toggleAutoplay = () => {
 .hero-images {
   width: 100%;
   max-width: 500px;
-  height: 400px;
+  height: 450px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .shape-img {
@@ -177,11 +181,13 @@ const toggleAutoplay = () => {
 
 .persona-img {
   position: absolute;
-  bottom: 0;
+  bottom: -115px;
   left: 0;
-  width: 70%;
+  width: 67%;
   height: auto;
   z-index: 1;
+  object-fit: cover;
+  object-position: top;
 }
 
 .celular-img {
@@ -217,12 +223,18 @@ const toggleAutoplay = () => {
   
   .hero-images {
     max-width: 400px;
-    height: 350px;
+    height: 380px;
+  }
+  
+  .persona-img {
+    width: 66%;
+    bottom: -90px;
   }
   
   .hero-buttons {
-    flex-direction: row;
+    flex-direction: column;
     gap: 1rem;
+    max-width: 240px;
   }
 }
 
@@ -242,6 +254,11 @@ const toggleAutoplay = () => {
   .hero-images {
     max-width: 600px;
     height: 450px;
+  }
+  
+  .hero-buttons {
+    flex-direction: row;
+    gap: 1.5rem;
   }
 }
 
@@ -290,7 +307,8 @@ const toggleAutoplay = () => {
   }
   
   .persona-img {
-    width: 60%;
+    width: 65%;
+    bottom: -80px;
   }
   
   .carousel-controls {
