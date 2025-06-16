@@ -2,12 +2,13 @@
   <nav class="navbar-custom">
     <!-- DIV PRINCIPAL -->
     <div class="container nav-wrapper">
-      
       <!-- SUB DIV 1: Marca -->
       <div class="nav-brand">
-        <router-link to="/" class="d-flex align-items-center text-decoration-none">
+        <router-link
+          to="/"
+          class="d-flex align-items-center text-decoration-none"
+        >
           <img :src="logo" alt="Pago de Banco de Chile" class="logo me-2" />
-         
         </router-link>
       </div>
 
@@ -24,20 +25,19 @@
       <div class="nav-cta">
         <button class="btn btn-cta">QUIERO CONTRATAR</button>
       </div>
-
     </div>
   </nav>
 </template>
 
 <script>
-import logo from '@/assets/logo.png'
+import logo from "@/assets/logo.png";
 
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   data() {
-    return { logo }
-  }
-}
+    return { logo };
+  },
+};
 </script>
 
 <style scoped>
