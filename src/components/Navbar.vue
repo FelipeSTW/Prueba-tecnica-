@@ -9,18 +9,18 @@
           </router-link>
         </div>
 
-        <!-- Desktop/Tablet: Links y botón -->
-        <div class="nav-desktop d-none d-md-flex">
-          <div class="nav-links">
-            <ul class="mb-0">
-              <li><a href="#">Productos y tarifas</a></li>
-              <li><a href="#">Cómo contratar</a></li>
-              <li><a href="#">Beneficios</a></li>
-            </ul>
-          </div>
-          <div class="nav-cta ms-4">
-            <button class="btn btn-cta">QUIERO CONTRATAR</button>
-          </div>
+        <!-- Desktop/Tablet: Links al centro -->
+        <div class="nav-links d-none d-md-block">
+          <ul class="mb-0">
+            <li><a href="#">Productos y tarifas</a></li>
+            <li><a href="#">Cómo contratar</a></li>
+            <li><a href="#">Beneficios</a></li>
+          </ul>
+        </div>
+
+        <!-- Desktop/Tablet: Botón a la derecha -->
+        <div class="nav-cta d-none d-md-block">
+          <button class="btn btn-cta">QUIERO CONTRATAR</button>
         </div>
 
         <!-- Mobile: Botón CTA + Hamburger -->
@@ -98,7 +98,7 @@ const closeMenu = () => {
 }
 
 /* Desktop/Tablet navigation */
-.nav-desktop {
+.nav-links {
   display: flex;
   align-items: center;
 }
