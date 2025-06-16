@@ -12,7 +12,7 @@
     >
       <Slide v-for="(slide, index) in slides" :key="index">
         <div class="container-fluid">
-          <div class="hero-content row align-items-center py-5">
+          <div class="hero-content row align-items-center">
             
             <!-- Texto - Desktop/Tablet: col-6, Mobile: col-12 -->
             <div class="col-12 col-md-6 hero-text-col">
@@ -140,7 +140,7 @@ const toggleAutoplay = () => {
 
 <style scoped>
 .hero-banner {
-  overflow: hidden;
+  /*overflow: hidden;*/
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   min-height: 500px;
@@ -159,7 +159,7 @@ const toggleAutoplay = () => {
 
 .hero-content {
   min-height: 500px;
-  padding: 2rem 1rem;
+
 }
 
 /* Texto */
@@ -196,9 +196,9 @@ const toggleAutoplay = () => {
 .hero-images {
   width: 100%;
   max-width: 500px;
-  height: 450px;
+  height: auto;
   margin: 0 auto;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .shape-img {
@@ -223,11 +223,10 @@ const toggleAutoplay = () => {
 
 .celular-img {
   position: absolute;
-  top: -2%;
+  top: 3%;
   right: -7%;
-  width: 84%;
+  width: 76%;
   height: auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
 
@@ -244,7 +243,7 @@ const toggleAutoplay = () => {
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1199px) {
   .hero-content {
-    padding: 1.5rem;
+
   }
   
   .hero-title {
@@ -253,7 +252,7 @@ const toggleAutoplay = () => {
   
   .hero-images {
     max-width: 400px;
-    height: 380px;
+    height: auto;
   }
   
   .persona-img {
@@ -277,7 +276,7 @@ const toggleAutoplay = () => {
 /* Desktop */
 @media (min-width: 1200px) {
   .hero-content {
-    padding: 3rem 2rem;
+
     max-width: 1440px;
     margin: 0 auto;
   }
@@ -306,7 +305,7 @@ const toggleAutoplay = () => {
   
   .hero-content {
     min-height: auto;
-    padding: 1rem;
+
     text-align: center;
   }
   

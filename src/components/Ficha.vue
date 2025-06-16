@@ -25,6 +25,9 @@ import truckIcon from "@/assets/truck.png";
   text-align: center;
   height: 64px;display: flex;
   align-items: center;
+  position: absolute;
+  width: 100%;
+  z-index: 99;
 }
 
 .icon-truck {

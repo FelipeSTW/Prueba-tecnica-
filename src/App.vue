@@ -18,5 +18,6 @@ import HeroBanner from "./components/HeroBanner.vue";
 <style>
 .banner-completo {
   max-height: 584px;
+  position:relative;
 }
 </style>
