@@ -1,6 +1,6 @@
 <template>
   <section class="ficha-banner">
-    <div class="container d-flex align-items-center py-2">
+    <div class="container d-flex align-items-center py-2 content-ficha">
       <img :src="truckIcon" alt="Camión" class="icon-truck me-2" />
 
       <span class="ficha-text">
@@ -36,6 +36,10 @@ import truckIcon from "@/assets/truck.png";
   color: #ffffff;
   font-size: 1rem;
   font-weight: 500;
+}
+
+.content-ficha {
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
