@@ -247,10 +247,24 @@ const toggleAutoplay = () => {
   .hero-content {
 
   }
+  .slider-controls.d-flex.align-items-center {
+    justify-content: center;
+    top:1px;
+    margin-left: 250px;
+  }
+    
   
   .hero-title {
     font-size: 2rem;
   }
+  h1.hero-title.mb-4 {
+    margin-left: 50px;
+
+  }
+  .hero-buttons.d-flex.gap-3 {
+    margin-left: 50px;
+   }
+
   
   .hero-images {
     max-width: 400px;
@@ -356,8 +370,7 @@ const toggleAutoplay = () => {
   .slider-controls.d-flex.align-items-center {
     justify-content: center;
     top: -17px;
-    margin-left: 125px;
-  }
+    margin-left: 125px;}
   
 }
 
