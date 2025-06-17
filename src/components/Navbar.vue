@@ -259,6 +259,7 @@ const closeMenu = () => {
   .nav-links a {
     font-size: 0.8rem;
     gap: 1.5rem;
+    font-size: 10px;
   }
   
   .btn-cta {
