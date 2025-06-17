@@ -355,8 +355,8 @@ const toggleAutoplay = () => {
   }
   .slider-controls.d-flex.align-items-center {
     justify-content: center;
-    top: 2px;
-    margin-left: 120px;
+    top: -17px;
+    margin-left: 125px;
   }
   
 }
