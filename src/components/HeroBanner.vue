@@ -203,12 +203,14 @@ const toggleAutoplay = () => {
 
 .shape-img {
   position: absolute;
-  top: -48%;
-  left: -13px;
-  width: 120%;
+  top: -30%; 
+  left: 0;   
+  width: 100%; 
   height: auto;
   z-index: 0;
 }
+
+
 
 .persona-img {
   position: absolute;
@@ -351,6 +353,12 @@ const toggleAutoplay = () => {
     bottom: 1rem;
     left: 1rem;
   }
+  .slider-controls.d-flex.align-items-center {
+    justify-content: center;
+    top: 2px;
+    margin-left: 120px;
+  }
+  
 }
 
 /* Loading overlay */
