@@ -247,6 +247,7 @@ const toggleAutoplay = () => {
   .hero-content {
 
   }
+  
   .slider-controls.d-flex.align-items-center {
     justify-content: center;
     top:1px;
@@ -264,6 +265,10 @@ const toggleAutoplay = () => {
   .hero-buttons.d-flex.gap-3 {
     margin-left: 50px;
    }
+   .li{
+    font-size: 8px;
+    white-space: nowrap; 
+  }
 
   
   .hero-images {
